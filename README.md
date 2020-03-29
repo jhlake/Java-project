@@ -1,1 +1,1 @@
-# This repository contains most of the java projects done during my studies in university.
+# This repository contains some of the java projects done during my early studies in university.
