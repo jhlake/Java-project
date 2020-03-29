@@ -1,0 +1,258 @@
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Universidad de los Andes (Bogotá - Colombia)
+ * Departamento de Ingeniería de Sistemas y Computación 
+ * Licenciado bajo el esquema Academic Free License version 2.1 
+ *
+ * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
+ * Ejercicio: n5_cupiMuseo.
+ * Autor: Equipo Cupi2 2015
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+package uniandes.cupi2.cupiMuseo.mundo;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+/**
+ * Clase que representa el CupiMuseo.
+ */
+public class CupiMuseo
+{
+    // -------------------------------------------------------------
+    // Atributos
+    // -------------------------------------------------------------
+
+    /**
+     * Arreglo de obras del CupiMuseo.
+     */
+    private ObraDeArte[] obras;
+
+    /**
+     * Número de la obra actual.
+     */
+    private int obraActual;
+
+    // -------------------------------------------------------------
+    // Constructor
+    // -------------------------------------------------------------
+
+    /**
+     * Crea un nuevo cupiMuseo a partir de un archivo.<br>
+     * <b>post</b> Se inicializó el arreglo de obras a partir de un archivo. <br>
+     * Se inicializó el atributo obraActual en 0. <br>
+     * @throws Exception Si ocurre un error al cargar el archivo con la información del museo.
+     */
+    public CupiMuseo( ) throws Exception
+    {
+        // Carga la información en un archivo de propiedades.
+        Properties persistencia = new Properties( );
+        FileInputStream fis = new FileInputStream( new File( "data/obrasDeArte.data" ) );
+        persistencia.load( fis );
+        fis.close( );
+
+        // Lee la información del archivo.
+        int cantidadObras = Integer.parseInt( persistencia.getProperty( "museo.cantidadObras" ) );
+
+        obras = new ObraDeArte[cantidadObras];
+        ObraDeArte obra;
+        for( int i = 1; i <= cantidadObras; i++ )
+        {
+            obra = new ObraDeArte( i, persistencia );
+            obras[ i - 1 ] = obra;
+        }
+
+        obraActual = 0;
+    }
+
+    // -------------------------------------------------------------
+    // Métodos
+    // -------------------------------------------------------------
+
+    /**
+     * Retorna la cantidad de obras que hay en el museo.<br>
+     * <b> pre: </b>El arreglo de obras de arte se encuentra inicializado.<br>
+     * @return Cantidad de obras del museo.
+     */
+    public int darCantidadObras( )
+    {
+        return obras.length;
+    }
+
+    /**
+     * Retorna la obra de arte actual del museo. <br>
+     * <b> pre: </b> El atributo obraActual se encuentra inicializado. <br>
+     * El arreglo de obras de arte se encuentra inicializado. <br>
+     * @return Obra de arte actual del museo.
+     * @throws Exception Si no existe una obra en la posición actual del museo.
+     */
+    public ObraDeArte darObraActual( ) throws Exception
+    {
+        ObraDeArte obra = obras[ obraActual ];
+        if( obra == null )
+        {
+            throw new Exception( " No existe ninguna obra en la posición actual." );
+
+        }
+        return obra;
+    }
+
+    /**
+     * Retorna la obra de arte ubicada en la posición anterior de la obra actual del museo. <br>
+     * <b> pre: </b> El atributo obraActual se encuentra inicializado. <br>
+     * El arreglo de obras de arte se encuentra inicializado. <br>
+     * <b> post: </b> Se actualizó el atributo obraActual a la posición anterior de la obra actual. <br>
+     * @return Obra anterior a la actual del museo.
+     * @throws Exception Si se encuentra en la primera posición del arreglo de obras.
+     */
+    public ObraDeArte darObraAnterior( ) throws Exception
+    {
+        ObraDeArte obra;
+        if( obraActual > 0 )
+        {
+            obraActual--;
+            obra = darObraActual( );
+        }
+        else
+        {
+            throw new Exception( "Se encuentra en la primera obra." );
+        }
+        return obra;
+
+    }
+
+    /**
+     * Retorna la obra de arte ubicada en la posición siguiente de la obra actual del museo. <br>
+     * <b> pre: </b> El atributo obraActual se encuentra inicializado. <br>
+     * El arreglo de obras de arte se encuentra inicializado. <br>
+     * <b> post: </b>Se actualizó el atributo obraActual a la posición siguiente de la obra actual. <br>
+     * @return Obra siguiente a la actual del museo.
+     * @throws Exception Si se encuentra en la última posición del arreglo de obras.
+     */
+    public ObraDeArte darObraSiguiente( ) throws Exception
+    {
+        ObraDeArte obra;
+        if( obraActual + 1 < obras.length )
+        {
+            obraActual++;
+            obra = darObraActual( );
+        }
+        else
+        {
+            throw new Exception( "Se encuentra en la última obra. " );
+        }
+        return obra;
+    }
+
+    /**
+     * Retorna la obra de arte ubicada en la primera posición del museo. <br>
+     * <b> pre: </b> El atributo obraActual se encuentra inicializado. <br>
+     * El arreglo de obras de arte se encuentra inicializado. <br>
+     * <b> post: </b> Se actualizó el atributo obraActual a la primera obra. <br>
+     * @return Primera obra del museo.
+     * @throws Exception Si no existe ninguna obra en el museo.
+     * @throws Exception Si ya se encuentra en la primera obra.
+     * 
+     */
+    public ObraDeArte darPrimeraObra( ) throws Exception
+    {
+        if( obras.length == 0 )
+        {
+            throw new Exception( "No existe ninguna obra en el museo." );
+        }
+        else if( obraActual == 0 )
+        {
+            throw new Exception( "Ya se encuentra en la primera obra." );
+        }
+        obraActual = 0;
+        return obras[ 0 ];
+    }
+
+    /**
+     * Retorna la última obra de arte del museo. <br>
+     * <b> pre: </b> El atributo obraActual se encuentra inicializado. <br>
+     * El arreglo de obras de arte se encuentra inicializado. <br>
+     * <b> post: </b> Se actualizó el atributo obraActual con la última obra. <br>
+     * @return Última obra del museo.
+     * @throws Exception Si no existe ninguna obra en el museo.
+     * @throws Exception Si ya se encuentra en la última obra.
+     */
+    public ObraDeArte darUltimaObra( ) throws Exception
+    {
+        if( obras.length == 0 )
+        {
+            throw new Exception( "No existe ninguna obra en el museo." );
+        }
+        if( obraActual == obras.length - 1 )
+        {
+            throw new Exception( "Ya se encuentra en la última obra." );
+        }
+        obraActual = obras.length - 1;
+        return obras[ obras.length - 1 ];
+    }
+
+    /**
+     * Retorna la obra de arte que tiene el nombre dado.<br>
+     * <b> pre: </b> El arreglo de obras de arte se encuentra inicializado. <br>
+     * <b> post: </b> El atributo de obraActual se actualizó a la posición de la obra buscada. <br>
+     * @param pNombreObra Nombre de la obra de arte a buscar. pNombreObra != null && pNombreObra != "".
+     * @return Obra de arte con el nombre dado.
+     * @throws Exception Si no se encuentra una obra con el nombre dado.
+     */
+    public ObraDeArte darObraPorNombre( String pNombreObra ) throws Exception
+    {
+        ObraDeArte obra = null;
+        boolean encontrada = false;
+        for( int i = 0; i < obras.length && !encontrada; i++ )
+        {
+            obra = ( ObraDeArte )obras[ i ];
+            if( obra.darNombreObra( ).equalsIgnoreCase( pNombreObra ) )
+            {
+                encontrada = true;
+                obraActual = i;
+            }
+        }
+        if( !encontrada )
+        {
+            throw new Exception( "No se encontró una obra de arte con nombre: " + pNombreObra + "." );
+        }
+    
+        return obra;
+    }
+
+    /**
+     * Agrega una nueva calificación a la obra de arte actual.<br>
+     * <b> pre: </b> El atributo obraActual se encuentra inicializado.<br>
+     * El arreglo de obras de arte se encuentra inicializado. <br>
+     * <b> post: </b> Se agrega la calificación a la obra actual. <br>
+     * @param pCalificacion Nueva calificación a agregar a la obra actual. pCalificación pertenece a {ObraDeArte.CINCO_ESTRELLAS, ObraDeArte.CUATRO_ESTRELLAS,
+     *        ObraDeArte.TRES_ESTRELLAS, ObraDeArte.DOS_ESTRELLAS, ObraDeArte.UNA_ESTRELLAS ObraDeArte.CERO_ESTRELLAS}.
+     */
+    public void calificarObraActual( int pCalificacion )
+    {
+        obras[ obraActual ].agregarCalificacion( pCalificacion );
+    }
+
+    // -----------------------------------------------------------------
+    // Métodos de Extensión
+    // -----------------------------------------------------------------
+
+    /**
+     * Método para la extensión 1.
+     * @return respuesta1.
+     */
+    public String metodo1( )
+    {
+        return "Respuesta 1.";
+    }
+
+    /**
+     * Método para la extensión 2.
+     * @return respuesta2.
+     */
+    public String metodo2( )
+    {
+        return "Respuesta 2.";
+    }
+}

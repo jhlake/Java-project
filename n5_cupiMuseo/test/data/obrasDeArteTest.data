@@ -1,0 +1,25 @@
+museo.cantidadObras=4
+
+museo.obra1.nombreObra= Gato del Raval
+museo.obra1.nombreArtista= Fernando Botero
+museo.obra1.tipo=2
+museo.obra1.imagen=gato_del_raval.png
+museo.obra1.remate=False
+
+museo.obra2.nombreObra= Los Músicos
+museo.obra2.nombreArtista= Fernando Botero
+museo.obra2.tipo=1
+museo.obra2.imagen=los_musicos.png
+museo.obra2.remate=True
+
+museo.obra3.nombreObra= Poporo Quimbaya
+museo.obra3.nombreArtista= Cultura Quimbaya
+museo.obra3.tipo=2
+museo.obra3.imagen=poporo.png
+museo.obra3.remate=False
+
+museo.obra4.nombreObra= Balsa Muisca
+museo.obra4.nombreArtista= Cultura Muisca
+museo.obra4.tipo=2
+museo.obra4.imagen=balsa_muisca.png
+museo.obra4.remate=True

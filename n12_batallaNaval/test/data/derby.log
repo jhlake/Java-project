@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+2010-11-23 15:37:03.839 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.1.1.0 - (208786): instance c013800d-012c-7961-8796-00005b2b766c
+on database directory C:\workspace\eclipse3.5\APO\n12_batallaNaval\test\data\testAdmin 
+
+Database Class Loader started - derby.database.classpath=''
+
+2010-11-23 15:37:04.060 GMT:
+Shutting down instance c013800d-012c-7961-8796-00005b2b766c
+----------------------------------------------------------------

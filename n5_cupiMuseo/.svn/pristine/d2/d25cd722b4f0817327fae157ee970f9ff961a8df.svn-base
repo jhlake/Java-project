@@ -1,0 +1,55 @@
+museo.cantidadObras=9
+
+museo.obra1.nombreObra= Gato del Raval
+museo.obra1.nombreArtista= Fernando Botero
+museo.obra1.tipo=2
+museo.obra1.imagen=gato_del_raval.png
+museo.obra1.remate=False
+
+museo.obra2.nombreObra= Los Músicos
+museo.obra2.nombreArtista= Fernando Botero
+museo.obra2.tipo=1
+museo.obra2.imagen=los_musicos.png
+museo.obra2.remate=False
+
+museo.obra3.nombreObra= Poporo Quimbaya
+museo.obra3.nombreArtista= Cultura Quimbaya
+museo.obra3.tipo=2
+museo.obra3.imagen=poporo.png
+museo.obra3.remate=False
+
+museo.obra4.nombreObra= Balsa Muisca
+museo.obra4.nombreArtista= Cultura Muisca
+museo.obra4.tipo=2
+museo.obra4.imagen=balsa_muisca.png
+museo.obra4.remate=True
+
+museo.obra5.nombreObra= Última Cena
+museo.obra5.nombreArtista= Leonardo Da Vinci
+museo.obra5.tipo=1
+museo.obra5.imagen=ultima_cena.png
+museo.obra5.remate=False
+
+museo.obra6.nombreObra= David
+museo.obra6.nombreArtista= Michelangelo Buonarroti
+museo.obra6.tipo=2
+museo.obra6.imagen=elDavid.png
+museo.obra6.remate=True
+
+museo.obra7.nombreObra= El nacimiento de Venus
+museo.obra7.nombreArtista= Sandro Botticelli
+museo.obra7.tipo=1
+museo.obra7.imagen=el_nacimiento_de_Venus.png
+museo.obra7.remate=False
+
+museo.obra8.nombreObra= Venus de Milo
+museo.obra8.nombreArtista= Desconocido
+museo.obra8.tipo=2
+museo.obra8.imagen=venus_de_milo.png
+museo.obra8.remate=False
+
+museo.obra9.nombreObra= Sposalizio della Vergine
+museo.obra9.nombreArtista= Rafael Sanzio
+museo.obra9.tipo=1
+museo.obra9.imagen=los_desposorios_de_la_Virgen.png
+museo.obra9.remate=True
